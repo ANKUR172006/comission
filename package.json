@@ -7,8 +7,12 @@
     "dev": "vite",
     "server": "node server/index.js",
     "build": "tsc --noEmit && vite build",
-    "start": "npm run build && node server/index.js",
+    "start": "node server/index.js",
+    "postinstall": "npm install --prefix server",
     "preview": "vite preview"
+  },
+  "engines": {
+    "node": ">=20"
   },
   "dependencies": {
     "react": "^18.3.1",

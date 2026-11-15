@@ -1,0 +1,25 @@
+# Render blueprint: one web service that serves the API and the built frontend.
+# `sync: false` = Render asks for the value in the dashboard, it is never stored in the repo.
+services:
+  - type: web
+    name: commission-dashboard
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: "20.11.1"
+      - key: MONGODB_URI
+        sync: false
+      - key: MONGODB_DB
+        value: commission
+      - key: TOKEN_SECRET
+        generateValue: true
+      - key: ADMIN_NAME
+        value: Ankur
+      - key: ADMIN_EMAIL
+        value: ankurjhattipur@gmail.com
+      - key: SEED_PARTNERS
+        sync: false
